@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { LookerBrowserSDK, IFolder, ILook, IDashboard } from '@looker/sdk';
 
-const MyFolder: React.FC = () => {
+const LookerFolders: React.FC = () => {
   const [folder, setFolder] = useState<IFolder | null>(null);
   const [looks, setLooks] = useState<ILook[]>([]);
   const [dashboards, setDashboards] = useState<IDashboard[]>([]);
@@ -69,4 +69,4 @@ const MyFolder: React.FC = () => {
   );
 };
 
-export default MyFolder;
+export default LookerFolders;
