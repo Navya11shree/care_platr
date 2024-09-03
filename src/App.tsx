@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { ExtensionProvider } from '@looker/extension-sdk-react';
 import { hot } from 'react-hot-loader/root';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import Sidebar from './Sidebar';
-import TopNavBar from './TopNavBar';
+import Sidebar from './components/Sidebar';
+import TopNavBar from './components/TopNavBar';
 import './tailwind.css'; 
-import LookerEmbed from './LookerEmbed';
-import ChatComponent from './ChatComponent'; 
-import LoginPage from './LoginPage'; 
+import LookerEmbed from './components/LookerEmbed';
+import ChatComponent from './components/ChatComponent'; 
+import LoginPage from './components/LoginPage'; 
 
 const App = hot(() => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
