@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import { RiNotification4Line } from 'react-icons/ri';
 import Avatar from 'react-avatar';
-import './tailwind.css'; 
+import '../tailwind.css';
+
 
 const notifications = [
   { id: 1, title: 'Appointment', message: 'Booked' },

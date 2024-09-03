@@ -6,7 +6,8 @@ import { MdGridView } from 'react-icons/md';
 import { BsChat } from 'react-icons/bs';
 import { FiUser } from 'react-icons/fi';
 import { CgFileDocument } from 'react-icons/cg';
-import './tailwind.css'; 
+import '../tailwind.css';
+
 
 
 const Sidebar: React.FC = () => {
