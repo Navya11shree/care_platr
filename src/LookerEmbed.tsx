@@ -39,48 +39,62 @@ const LookerEmbed: React.FC<EmbedProps> = ({ folderId }) => {
     setSelectedContent(`${type === 'dashboard' ? 'dashboards' : 'looks'}/${id}`);
   };
 
-  if (error) return <div>Error: {error}</div>;
+  const handleClose = () => {
+    setSelectedContent(null);
+  };
 
-  if (selectedContent) {
-    return (
-      <iframe
-        src={`${extensionSDK.lookerHostData?.hostUrl}/embed/${selectedContent}`}
-        style={{ height: '100vh', width: '100%', border: 'none' }}
-        title="Looker Embed"
-        allowFullScreen
-      />
-    );
-  }
+  if (error) return <div className="p-4 text-red-600">Error: {error}</div>;
 
   return (
-    <div style={{ padding: '20px' }}>
-      {folderName && (
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
-          <FaFolder style={{ fontSize: '2rem', marginRight: '10px' }} />
-          <h2 style={{ fontWeight: 'bold', fontSize: '2rem', margin: 0 }}>{folderName}</h2>
+    <div className="flex h-screen w-screen">
+      {/* List on the left */}
+      <div className="w-50 p-4 border-r border-gray-300 overflow-y-auto">
+        {folderName && (
+          <div className="flex items-center mb-4">
+            <FaFolder className="text-4xl mr-2" />
+            <h2 className="font-bold text-3xl">{folderName}</h2>
+          </div>
+        )}
+        
+        {folderContents.map(({ type, items }) => (
+          <div key={type} className="mb-4">
+            <h2 className="font-bold text-2xl mb-2">
+              {type === 'dashboard' ? 'Dashboards' : 'Looks'}
+            </h2>
+            {items.length > 0 ? (
+              items.map((item: any) => (
+                <div
+                  key={item.id}
+                  onClick={() => handleContentClick(item.id, type)}
+                  className="mb-2 cursor-pointer text-xl hover:text-blue-600"
+                >
+                  {item.title}
+                </div>
+              ))
+            ) : (
+              <div>No {type}s available.</div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Iframe and Close button on the right */}
+      {selectedContent && (
+        <div className="flex flex-col flex-1">
+          <iframe
+            src={`${extensionSDK.lookerHostData?.hostUrl}/embed/${selectedContent}`}
+            className="flex-grow w-full border-none"
+            title="Looker Embed"
+            allowFullScreen
+          />
+          <button
+            onClick={handleClose}
+            className="py-2 px-4 text-lg bg-blue-600 text-white border-none cursor-pointer text-center mt-2 mx-auto rounded"
+          >
+            Close
+          </button>
         </div>
       )}
-
-      {folderContents.map(({ type, items }) => (
-        <div key={type}>
-          <h2 style={{ fontWeight: 'bold', fontSize: '1.75rem', marginBottom: '10px' }}>
-            {type === 'dashboard' ? 'Dashboards' : 'Looks'}
-          </h2>
-          {items.length > 0 ? (
-            items.map((item: any) => (
-              <div
-                key={item.id}
-                onClick={() => handleContentClick(item.id, type)}
-                style={{ marginBottom: '10px', cursor: 'pointer', fontSize: '1.25rem' }}
-              >
-                {item.title}
-              </div>
-            ))
-          ) : (
-            <div>No {type}s available.</div>
-          )}
-        </div>
-      ))}
     </div>
   );
 };
