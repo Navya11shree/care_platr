@@ -1,9 +1,7 @@
-// src/TopNavBar.tsx
 import React, { useState } from 'react';
 import { RiNotification4Line } from 'react-icons/ri';
 import Avatar from 'react-avatar';
 import '../tailwind.css';
-
 
 const notifications = [
   { id: 1, title: 'Appointment', message: 'Booked' },
@@ -19,27 +17,27 @@ const TopNavBar: React.FC = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   return (
-    <div className="w-screen h-16 bg-white flex flex-col">
-      <div className="flex flex-row justify-between items-center px-4 py-3">
+    <div className="w-full h-16 bg-white flex flex-col relative">
+      <div className="flex justify-between items-center px-4 py-3">
         <div className="text-2xl font-bold">Health Monitoring</div>
-        <div className="md:block-hidden w-[10%] mr-12 flex flex-row justify-end items-center gap-4">
-          <div className="flex items-center py-2 px-3 rounded-full border-2 border-gray-200" onClick={() => setIsOpen(!isOpen)}>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center py-2 px-3 rounded-full border-2 border-gray-200 cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
             <RiNotification4Line size={19} className="rounded-full bg-gray-100" />
-            <div className="text-right font-thin ml-2">Notification</div>
+            <div className="ml-2 font-thin">Notification</div>
           </div>
-          <div className="cursor-pointer ml-4" onClick={() => setIsProfileOpen(true)}>
-            <Avatar src="https://www.kindpng.com/picc/m/394-3947019_round-profile-picture-png-transparent-png.png" size='40' round className="rounded-full border-2 border-gray-200" />
+          <div className="cursor-pointer" onClick={() => setIsProfileOpen(true)}>
+            <Avatar src="https://www.kindpng.com/picc/m/394-3947019_round-profile-picture-png-transparent-png.png" size="40" round className="rounded-full border-2 border-gray-200" />
           </div>
         </div>
       </div>
       {isOpen && !selectedNotification && (
-        <div className="absolute top-16 right-0 w-64 bg-blue-100 border-2 shadow-md p-4">
+        <div className="absolute top-16 right-4 w-64 bg-blue-100 border-2 shadow-md p-4 z-10">
           <div className="font-bold mb-2 text-center">Notification list</div>
-          <ul className="lex items-center py-2 px-3 rounded-full border-2 border-gray-200">
+          <ul>
             {notifications.map((notification) => (
               <li
                 key={notification.id}
-                className="cursor-pointer hover:bg-blue-400 w-200 rounded-full border-2 border-black mb-2 text-center"
+                className="cursor-pointer hover:bg-blue-400 rounded-full border-2 border-black mb-2 text-center p-1"
                 onClick={() => setSelectedNotification(notification)}
               >
                 {notification.title}
@@ -52,7 +50,7 @@ const TopNavBar: React.FC = () => {
         </div>
       )}
       {selectedNotification && (
-        <div className="absolute top-16 right-0 w-64 bg-white shadow-md p-4 text-center">
+        <div className="absolute top-16 right-4 w-64 bg-white shadow-md p-4 z-10">
           <h2 className="font-bold">{selectedNotification.title}</h2>
           <p className="text-gray-600">{selectedNotification.message}</p>
           <button onClick={() => setSelectedNotification(null)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
@@ -61,7 +59,7 @@ const TopNavBar: React.FC = () => {
         </div>
       )}
       {isProfileOpen && (
-        <div className="absolute top-16 right-0 w-64 bg-white shadow-md p-4 text-center border-2">
+        <div className="absolute top-16 right-4 w-64 bg-white shadow-md p-4 z-10 border-2">
           <h2 className="font-bold">Profile Details</h2>
           <p className="text-gray-600">Name: Riya</p>
           <p className="text-gray-600">Email: riya123@gmail.com</p>

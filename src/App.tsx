@@ -16,20 +16,20 @@ const App = hot(() => {
     <ExtensionProvider>
       <Router>
         {isAuthenticated ? (
-          <div style={{ height: '100vh', display: 'flex' }}>
+          <div style={{ height: '100vh', width: '100vw', display: 'flex', overflow: 'hidden' }}>
             {/* Sidebar */}
             <Sidebar />
 
             {/* Main Content Area */}
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
               {/* Top Navigation Bar */}
               <TopNavBar />
 
               {/* Looker Content Area */}
-              <div style={{ flex: 1, padding: '16px', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ flex: 1, padding: '16px', display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
                 <Switch>
                   <Route exact path="/" render={() => (
-                    <div style={{ flex: 1, display: 'flex' }}>
+                    <div style={{ flex: 1, display: 'flex', overflow: 'auto' }}>
                       <LookerEmbed folderId="117" />
                     </div>
                   )} />
@@ -52,4 +52,4 @@ const App = hot(() => {
   );
 });
 
-export default App;
+export default App;

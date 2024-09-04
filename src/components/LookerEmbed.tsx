@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { ExtensionContext } from '@looker/extension-sdk-react';
-import { FaFolder } from 'react-icons/fa'; 
+import { FaFolder } from 'react-icons/fa';
 
 interface EmbedProps {
   folderId: string;
@@ -27,6 +27,12 @@ const LookerEmbed: React.FC<EmbedProps> = ({ folderId }) => {
           { type: 'dashboard', items: dashboards },
           { type: 'look', items: looks }
         ]);
+
+        // Automatically load "Dashboard 1" if available
+        const dashboard1 = dashboards.find((dashboard: any) => dashboard.title === 'Dashboard 1');
+        if (dashboard1) {
+          setSelectedContent(`dashboards/${dashboard1.id}`);
+        }
       } catch {
         setError('Failed to fetch folder contents. Please try again.');
       }
@@ -55,7 +61,7 @@ const LookerEmbed: React.FC<EmbedProps> = ({ folderId }) => {
             <h2 className="font-bold text-3xl">{folderName}</h2>
           </div>
         )}
-        
+
         {folderContents.map(({ type, items }) => (
           <div key={type} className="mb-4">
             <h2 className="font-bold text-2xl mb-2">
@@ -66,7 +72,7 @@ const LookerEmbed: React.FC<EmbedProps> = ({ folderId }) => {
                 <div
                   key={item.id}
                   onClick={() => handleContentClick(item.id, type)}
-                  className="mb-2 cursor-pointer text-xl hover:text-blue-600"
+                  className={`mb-2 cursor-pointer text-xl hover:text-blue-600 ${selectedContent === `dashboards/${item.id}` ? 'text-blue-600 font-bold' : ''}`}
                 >
                   {item.title}
                 </div>
