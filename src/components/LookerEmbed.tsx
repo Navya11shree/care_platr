@@ -1,3 +1,4 @@
+//LookerEmbed.tsx
 import React, { useEffect, useState, useContext } from 'react';
 import { ExtensionContext } from '@looker/extension-sdk-react';
 import { FaFolder } from 'react-icons/fa';
@@ -29,7 +30,7 @@ const LookerEmbed: React.FC<EmbedProps> = ({ folderId }) => {
         ]);
 
         // Automatically load "Dashboard 1" if available
-        const dashboard1 = dashboards.find((dashboard: any) => dashboard.title === 'Dashboard 1');
+        const dashboard1 = dashboards.find((dashboard: any) => dashboard.title === 'dashboard1');
         if (dashboard1) {
           setSelectedContent(`dashboards/${dashboard1.id}`);
         }
@@ -86,16 +87,17 @@ const LookerEmbed: React.FC<EmbedProps> = ({ folderId }) => {
 
       {/* Iframe and Close button on the right */}
       {selectedContent && (
-        <div className="flex flex-col flex-1">
+        <div className="flex flex-col flex-1 p-4">
           <iframe
             src={`${extensionSDK.lookerHostData?.hostUrl}/embed/${selectedContent}`}
-            className="flex-grow w-full border-none"
+            className="border-none"
             title="Looker Embed"
             allowFullScreen
+            style={{ height: '85vh', width: '75vw' }} // Adjusted size: height 60% of viewport height, width 80% of viewport width
           />
           <button
             onClick={handleClose}
-            className="py-2 px-4 text-lg bg-blue-600 text-white border-none cursor-pointer text-center mt-2 mx-auto rounded"
+            className="fixed bottom-4 right-4 py-2 px-4 text-lg bg-blue-600 text-white border-none cursor-pointer text-center rounded"
           >
             Close
           </button>

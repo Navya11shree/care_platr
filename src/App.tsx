@@ -8,6 +8,10 @@ import './tailwind.css';
 import LookerEmbed from './components/LookerEmbed';
 import ChatComponent from './components/ChatComponent'; 
 import LoginPage from './components/LoginPage'; 
+import ExploreComponent from './components/ExploreComponent';
+import GridComponent from './components/GridComponent';
+import UserComponent from './components/UserComponent';
+import DocumentsComponent from './components/DocumentsComponent';
 
 const App = hot(() => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -25,16 +29,24 @@ const App = hot(() => {
               {/* Top Navigation Bar */}
               <TopNavBar />
 
-              {/* Looker Content Area */}
+              {/* Content Area */}
               <div style={{ flex: 1, padding: '16px', display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
                 <Switch>
-                  <Route exact path="/" render={() => (
-                    <div style={{ flex: 1, display: 'flex', overflow: 'auto' }}>
+                  <Route exact path="/" component={() => (
+                    <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
                       <LookerEmbed folderId="117" />
                     </div>
                   )} />
                   <Route path="/chat" component={ChatComponent} />
+                  <Route path="/explore" component={() => (
+                    <ExploreComponent exploreId="care_platr/patient_healthcare_records" />
+                  )} />
+                  <Route path="/grid" component={GridComponent} />
+                  <Route path="/user" component={UserComponent} />
+                  <Route path="/documents" component={DocumentsComponent} /> 
+                  
                   {/* Add other routes here */}
+                  <Redirect from="*" to="/" /> {/* Redirect unknown routes to home */}
                 </Switch>
               </div>
             </div>

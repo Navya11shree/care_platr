@@ -1,19 +1,17 @@
-// src/Sidebar.tsx
+//sidebar.tsx
+
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { CiHome } from 'react-icons/ci';
-import { MdGridView } from 'react-icons/md';
+import { MdExplore, MdGridView } from 'react-icons/md';
 import { BsChat } from 'react-icons/bs';
 import { FiUser } from 'react-icons/fi';
 import { CgFileDocument } from 'react-icons/cg';
 import '../tailwind.css';
 
-
-
 const Sidebar: React.FC = () => {
   const location = useLocation();
   const [isExpanded, setIsExpanded] = useState(false);
-  const [activeItem, setActiveItem] = useState('');
 
   const sidebarItems = [
     { path: '/', icon: <CiHome size={20} />, label: 'Home' },
@@ -21,16 +19,11 @@ const Sidebar: React.FC = () => {
     { path: '/chat', icon: <BsChat size={20} />, label: 'Chat' },
     { path: '/user', icon: <FiUser size={20} />, label: 'User' },
     { path: '/documents', icon: <CgFileDocument size={20} />, label: 'Documents' },
+    { path: '/explore', icon: <MdExplore size={28} />, label: 'Explore' },
   ];
 
   const handleItemClick = (path: string) => {
-    if (activeItem === path) {
-      setIsExpanded(false);
-      setActiveItem('');
-    } else {
-      setIsExpanded(true);
-      setActiveItem(path);
-    }
+    setIsExpanded(path !== location.pathname);
   };
 
   return (
@@ -43,7 +36,6 @@ const Sidebar: React.FC = () => {
         <img
           className="w-12 h-12"
           src="https://www.google.com/u/2/ac/images/logo.gif?uid=102248287900093422159&service=google_gsuite"
-
           alt="DataPlatr-logo"
         />
       </div>
