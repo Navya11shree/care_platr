@@ -28,7 +28,7 @@ const ExploreComponent: React.FC<ExploreComponentProps> = ({ exploreId }) => {
           className="border-none"
           title="Looker Explore Embed"
           allowFullScreen
-          style={{ height: '100vh', width: '100vw' }} // Adjust size as per your layout
+          style={{ height: '95vh', width: '88vw' }} // Adjust size as per your layout
         />
       ) : (
         <div>Loading Explore...</div>

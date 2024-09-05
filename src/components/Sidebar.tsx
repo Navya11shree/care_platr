@@ -1,5 +1,3 @@
-//sidebar.tsx
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { CiHome } from 'react-icons/ci';
@@ -11,7 +9,8 @@ import '../tailwind.css';
 
 const Sidebar: React.FC = () => {
   const location = useLocation();
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true); // Start with expanded state by default
+  const [selectedPath, setSelectedPath] = useState(location.pathname);
 
   const sidebarItems = [
     { path: '/', icon: <CiHome size={20} />, label: 'Home' },
@@ -23,7 +22,14 @@ const Sidebar: React.FC = () => {
   ];
 
   const handleItemClick = (path: string) => {
-    setIsExpanded(path !== location.pathname);
+    setSelectedPath(path);
+    if (path === selectedPath) {
+      // Toggle sidebar if the same item is clicked
+      setIsExpanded(!isExpanded);
+    } else {
+      // Expand sidebar when a different item is clicked
+      setIsExpanded(true);
+    }
   };
 
   return (

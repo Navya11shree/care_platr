@@ -39,7 +39,9 @@ const App = hot(() => {
                   )} />
                   <Route path="/chat" component={ChatComponent} />
                   <Route path="/explore" component={() => (
-                    <ExploreComponent exploreId="care_platr/patient_healthcare_records" />
+                    <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
+                      <ExploreComponent exploreId="care_platr/patient_healthcare_records" />
+                    </div>
                   )} />
                   <Route path="/grid" component={GridComponent} />
                   <Route path="/user" component={UserComponent} />
