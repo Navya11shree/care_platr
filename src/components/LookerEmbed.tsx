@@ -1,4 +1,3 @@
-//LookerEmbed.tsx
 import React, { useEffect, useState, useContext } from 'react';
 import { ExtensionContext } from '@looker/extension-sdk-react';
 import { FaFolder } from 'react-icons/fa';
@@ -73,7 +72,9 @@ const LookerEmbed: React.FC<EmbedProps> = ({ folderId }) => {
                 <div
                   key={item.id}
                   onClick={() => handleContentClick(item.id, type)}
-                  className={`mb-2 cursor-pointer text-xl hover:text-blue-600 ${selectedContent === `dashboards/${item.id}` ? 'text-blue-600 font-bold' : ''}`}
+                  className={`mb-2 cursor-pointer text-xl hover:text-blue-600 ${
+                    selectedContent === `${type}s/${item.id}` ? 'text-blue-600 font-bold' : ''
+                  }`}
                 >
                   {item.title}
                 </div>
@@ -93,7 +94,7 @@ const LookerEmbed: React.FC<EmbedProps> = ({ folderId }) => {
             className="border-none"
             title="Looker Embed"
             allowFullScreen
-            style={{ height: '85vh', width: '75vw' }} // Adjusted size: height 60% of viewport height, width 80% of viewport width
+            style={{ height: '85vh', width: '75vw' }} // Adjusted size: height 85% of viewport height, width 75% of viewport width
           />
           <button
             onClick={handleClose}
