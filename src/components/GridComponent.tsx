@@ -1,3 +1,4 @@
+//gridecomponent.tsx
 import React from 'react';
 
 const GridComponent: React.FC = () => {

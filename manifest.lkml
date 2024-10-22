@@ -3,7 +3,7 @@ project_name: "care_platr"
 application: care_platr {
   label: "Care Platr"
   #url: "https://localhost:8080/bundle.js"  # Update to your production URL when ready
-  file:bundle.js"
+ file:"bundle.js"
   entitlements: {
     core_api_methods: [
       "me",
