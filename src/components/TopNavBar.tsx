@@ -61,8 +61,8 @@ const TopNavBar: React.FC = () => {
       {isProfileOpen && (
         <div className="absolute top-16 right-4 w-64 bg-white shadow-md p-4 z-10 border-2">
           <h2 className="font-bold">Profile Details</h2>
-          <p className="text-gray-600">Name: Riya</p>
-          <p className="text-gray-600">Email: riya123@gmail.com</p>
+          <p className="text-gray-600">Name:NAVYA</p>
+          <p className="text-gray-600">Email: NAVYA123@gmail.com</p>
           <button onClick={() => setIsProfileOpen(false)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Close
           </button>
