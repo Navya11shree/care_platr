@@ -172,7 +172,6 @@ const Sidebar: React.FC = () => {
     { path: '/user', icon: <FiUser size={20} />, label: 'User' },
     { path: '/documents', icon: <CgFileDocument size={20} />, label: 'Documents' },
     { path: '/explore', icon: <MdExplore size={28} />, label: 'Explore' },
-    { path: '/search', icon: <AiOutlineSearch size={20} />, label: 'Search' },
     { path: '/api', icon: <TbApi size={20} />, label: 'API' },
   ];
 

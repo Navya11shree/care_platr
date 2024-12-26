@@ -89,7 +89,6 @@ import ExploreComponent from './components/ExploreComponent';
 import GridComponent from './components/GridComponent';
 import UserComponent from './components/UserComponent';
 import DocumentsComponent from './components/DocumentsComponent';
-import SearchComponent from './components/SearchComponent';
 import APIComponent from './components/APIComponent';
 
 
@@ -126,7 +125,6 @@ const App = hot(() => {
                   <Route path="/grid" component={GridComponent} />
                   <Route path="/user" component={UserComponent} />
                   <Route path="/documents" component={DocumentsComponent} /> 
-                  <Route path="/search" component={SearchComponent} />
                   <Route path="/api" component={APIComponent} />
                   
                   {/* Add other routes here */}
