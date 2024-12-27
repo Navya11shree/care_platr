@@ -90,6 +90,7 @@ import GridComponent from './components/GridComponent';
 import UserComponent from './components/UserComponent';
 import DocumentsComponent from './components/DocumentsComponent';
 import APIComponent from './components/APIComponent';
+import LookerAPIComponent from './components/LookerAPIComponent';
 
 
 const App = hot(() => {
@@ -126,6 +127,7 @@ const App = hot(() => {
                   <Route path="/user" component={UserComponent} />
                   <Route path="/documents" component={DocumentsComponent} /> 
                   <Route path="/api" component={APIComponent} />
+                  <Route path="/looker-api" component={LookerAPIComponent} />
                   
                   {/* Add other routes here */}
                   <Redirect from="*" to="/" /> {/* Redirect unknown routes to home */}

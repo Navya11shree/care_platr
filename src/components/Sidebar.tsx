@@ -173,6 +173,7 @@ const Sidebar: React.FC = () => {
     { path: '/documents', icon: <CgFileDocument size={20} />, label: 'Documents' },
     { path: '/explore', icon: <MdExplore size={28} />, label: 'Explore' },
     { path: '/api', icon: <TbApi size={20} />, label: 'API' },
+    { path: '/looker-api', icon: <TbApi size={20} />, label: 'Looker API' },
   ];
 
   const handleItemClick = (path: string) => {
